@@ -1,8 +1,8 @@
-const fs = require('fs');
+const http = require('http');
 
 const users = ['ironman', 'capamerica', 'blackwidow', 'hawkeye', 'hulksmash', 'godofthunder'];
 
-const server = (req, res) => {
+const server = http.createServer((req, res) => {
   const url = req.url;
   if (url === '/') {
       res.setHeader('Content-Type', 'text/html');
@@ -41,6 +41,5 @@ const server = (req, res) => {
       res.setHeader('Location', '/users');
       res.end();
   }
-};
+});
 
-module.exports = server;
