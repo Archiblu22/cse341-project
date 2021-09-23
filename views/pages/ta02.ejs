@@ -25,12 +25,13 @@
       </div>
       <div>
         <form action="/ta02/removeUser" method="POST">
-          <label for="remUser">Username to remove</label><br>
+          <label for="remUser">Remove Username</label><br>
           <input type="text" name="username">
           <button type="submit">Remove</button>
         </form>
       </div>
       <div>
+        <h3>Usernames</h3>
         <ul>
           <% for(let user of users) { %>
             <li>
