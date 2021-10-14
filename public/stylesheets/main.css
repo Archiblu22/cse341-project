@@ -41,3 +41,16 @@
   width: 5rem;
   height: 5rem;
 }
+
+form {
+  margin: .5rem;
+  display: inline;
+}
+
+.container div {
+  margin: 2rem 0;
+}
+
+.reset {
+  margin: 1rem 0;
+}
