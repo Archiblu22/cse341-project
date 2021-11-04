@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../includes/header.ejs %>
+        <link rel="stylesheet" href="/stylesheets/ta03.css">
+</head>
+
+<body>
+    <% include ../includes/nav.ejs %>
+        <div class="jumbotron text-center">
+            <h1>JSON Results</h1>
+        </div>
+
+        <div class="container">
+            <h2>Product Listing</h2>
+            <form action="/pr08" method="POST" class="form-inline">
+                <input type="text" name="searchValue" placeholder="Search by Title" class="form-control"
+                    style="width:300px">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <% if (searchedValue.length> 0) { %>
+                    <a type="button" href="/pr08" class="btn btn-default">Clear Search</a>
+                    <h3>Showing Search Results For: <%= searchedValue %>
+                    </h3>
+                    <% } %>
+            </form>
+        </div>
+        <div class="container">
+            <% for(var i=0; i<data.length; i++) {%>
+                <% if(i % 3==0) { %>
+
+                    <div class="product-container">
+                        <% } %>
+                            <div class="product">
+                                <h3>
+                                    <%= data[i].name %> - <%= data[i].price %>
+                                </h3>
+                                <img src="<%= data[i].imageUrl %>" alt="t">
+                                <div>
+                                    <p>
+                                        <%= data[i].description %>
+                                    </p>
+                                    <p>Tags: <%= product.tags.join(", ") %></p>
+                        </div>
+                        <% if(i % 3==2) { %>
+                    </div>
+                    <% } %>
+            </div>
+            <% } %>
+
+        </div>
+        <!-- Pagination button generation -->
+        <form class=" actions container">
+                                            <% for(var i=1; i <=numPages; i++) { %>
+                                                <a href="?page=<%= i %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>"
+                                                    class="btn <%= (page==i) ? 'btn-primary' : 'btn-default' %>">
+                                                    <%= i %>
+                                                </a>
+                                                <% } %>
+                                </div>
+</body>
+
+</html>
